@@ -4,11 +4,24 @@ import java.util.Date;
 import java.util.UUID;
 
 public class EventContent {
-    private UUID eventPlanItemId;
+    private final UUID eventPlanItemId;
     private String contentName;
     private String description;
     private Date startDate;
     private Date endDate;
+
+    public EventContent() {
+        this.eventPlanItemId = UUID.randomUUID();
+    }
+
+    public EventContent(UUID eventPlanItemId, String contentName, String description, Date startDate, Date endDate) {
+        this.eventPlanItemId = eventPlanItemId;
+        this.contentName = contentName;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
 
     public UUID getEventPlanItemId() {
         return eventPlanItemId;

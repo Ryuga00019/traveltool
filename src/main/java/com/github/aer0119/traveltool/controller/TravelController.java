@@ -22,8 +22,6 @@ public class TravelController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        var plan = travelPlanService.createPlan();
-        model.addAttribute("plan", plan);
 
         return "createplan";
     }

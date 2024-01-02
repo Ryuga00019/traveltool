@@ -25,7 +25,6 @@ dependencies {
 	implementation 'org.webjars:jquery:2.0.3'
 	implementation 'org.webjars.bower:moment:2.19.1'
 	//implementation 'org.webjars.bower:fullcalendar:3.5.1'
-	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

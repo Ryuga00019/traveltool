@@ -1,7 +1,5 @@
 package com.github.aer0119.traveltool.controller;
 
-
-
 import com.github.aer0119.traveltool.service.TravelPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,15 +1,15 @@
 package com.github.aer0119.traveltool.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 public class EventPlan {
     private final UUID eventPlanId;
     private String title;
     private String description;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private final ArrayList<EventContent> eventContents;
 
     public EventPlan() {
@@ -17,7 +17,7 @@ public class EventPlan {
         this.eventContents = new ArrayList<>();
     }
 
-    public EventPlan(UUID eventPlanId, String title, String description, Date startDate, Date endDate, ArrayList<EventContent> eventContents) {
+    public EventPlan(UUID eventPlanId, String title, String description, LocalDate startDate, LocalDate endDate, ArrayList<EventContent> eventContents) {
         this.eventPlanId = eventPlanId;
         this.title = title;
         this.description = description;
@@ -48,20 +48,20 @@ public class EventPlan {
         this.description=description;
     }
 
-    public Date getStartDate(){
+    public LocalDate getStartDate(){
         return startDate;
     }
 
-    public void setStartDate(Date startDate){
+    public void setStartDate(LocalDate startDate){
         this.startDate=startDate;
     }
 
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 }

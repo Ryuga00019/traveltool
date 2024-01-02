@@ -1,5 +1,6 @@
 package com.github.aer0119.traveltool.controller;
 
+import com.github.aer0119.traveltool.domain.EventPlan;
 import com.github.aer0119.traveltool.service.TravelPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,8 @@ public class TravelController {
 
     @GetMapping("/create")
     public String create(Model model) {
-
+        var eventPlan = new EventPlan();
+        model.addAttribute("eventPlan", eventPlan);
         return "createplan";
     }
 }

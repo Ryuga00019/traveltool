@@ -5,8 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/save}" method="post" enctype="multipart/form-data" th:object="${plan}">
-    <label>Title:<input th:field="*{title}"></label>
+<form th:action="@{/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
 </form>
 </body>
 </html>

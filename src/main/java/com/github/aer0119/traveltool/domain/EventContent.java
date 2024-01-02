@@ -1,20 +1,20 @@
 package com.github.aer0119.traveltool.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EventContent {
     private final UUID eventPlanItemId;
     private String contentName;
     private String description;
-    private Date startDate;
-    private Date endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
     public EventContent() {
         this.eventPlanItemId = UUID.randomUUID();
     }
 
-    public EventContent(UUID eventPlanItemId, String contentName, String description, Date startDate, Date endDate) {
+    public EventContent(UUID eventPlanItemId, String contentName, String description, LocalDateTime startDate, LocalDateTime endDate) {
         this.eventPlanItemId = eventPlanItemId;
         this.contentName = contentName;
         this.description = description;
@@ -43,19 +43,19 @@ public class EventContent {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 }

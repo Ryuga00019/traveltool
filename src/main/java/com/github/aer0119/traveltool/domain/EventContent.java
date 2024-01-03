@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EventContent {
-    private final UUID eventPlanItemId;
-    private String contentName;
+    private final UUID eventPlanItemId; //num
+    private String contentName; //place
     private String description;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime startDate; //00:00 - 24:00 滞在、経過時間(開始)
+    private LocalDateTime endDate; //00:00 - 24:00 滞在、経過時間(終了)
 
     public EventContent() {
         this.eventPlanItemId = UUID.randomUUID();

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class EventPlan {
-    private final UUID eventPlanId;
+    private final UUID eventPlanId; //num
     private String title;
     private String description;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDate startDate; //旅行初日
+    private LocalDate endDate; //旅行最終日
     private final ArrayList<EventContent> eventContents;
 
     public EventPlan() {

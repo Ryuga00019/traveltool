@@ -18,16 +18,23 @@ public class TravelController {
         this.travelPlanService = travelPlanService;
     }
 
-
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
 
     @GetMapping("/create")
     public String createForm(Model model) {
         var eventPlan = new EventPlan();
         model.addAttribute("eventPlan", eventPlan);
+        model.addAttribute("places", "PlacesName");
+        model.addAttribute("startDay", "FirstDay");
+        model.addAttribute("endDay", "LastDay");
         return "createplan";
     }
     @PostMapping("/create/save")
     public String createSave(@ModelAttribute EventPlan eventplan) {
-        return "index";
+
+        return "redirect:/index";
     }
 }

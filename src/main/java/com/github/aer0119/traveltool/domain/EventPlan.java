@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class EventPlan {
     private final UUID eventPlanId; //num
-    private String title;
+    private String placeName; //Map name
     private String description;
     private LocalDate startDate; //旅行初日
     private LocalDate endDate; //旅行最終日
@@ -17,9 +17,9 @@ public class EventPlan {
         this.eventContents = new ArrayList<>();
     }
 
-    public EventPlan(UUID eventPlanId, String title, String description, LocalDate startDate, LocalDate endDate, ArrayList<EventContent> eventContents) {
+    public EventPlan(UUID eventPlanId, String placeName, String description, LocalDate startDate, LocalDate endDate, ArrayList<EventContent> eventContents) {
         this.eventPlanId = eventPlanId;
-        this.title = title;
+        this.placeName = placeName;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -31,12 +31,12 @@ public class EventPlan {
         return eventPlanId;
     }
 
-    public String getTitle(){
-        return title;
+    public String getPlaceName(){
+        return placeName;
     }
 
-    public void setTitle(String title){
-        this.title=title;
+    public void setPlaceName(String placeName){
+        this.placeName=placeName;
     }
 
 

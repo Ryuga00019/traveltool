@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EventContent {
-    private final UUID eventPlanItemId; //num
-    private String contentName; //place
+    private final UUID eventPlanItemId; //dayID > 1日目、2日目 >startDate-endDate
+    private String contentName; //place name
     private String description;
     private LocalDateTime startDate; //00:00 - 24:00 滞在、経過時間(開始)
     private LocalDateTime endDate; //00:00 - 24:00 滞在、経過時間(終了)

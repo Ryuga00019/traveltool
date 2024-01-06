@@ -5,14 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<h1>create plan</h1>
+
+<h2>create plan</h2>
+
 <form th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
 
-
-            <div >
-                <input type="text" th:field="*{title}" required minlength="2" maxlength="128"/>
-            </div>
-
+    <div>
+        <label for="places">[[${places}]]</label>
+        <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="places"/>
+    </div>
+    <div>
+        <label for="startDay">[[${startDay}]]</label>
+        <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay"/>
+    </div>
+    <div>
+        <label for="endDay">[[${endDay}]]</label>
+        <input type="date" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay"/>
+    </div>
+    <button type="submit">決定</button>
 </form>
 </body>
 </html>

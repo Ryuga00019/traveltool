@@ -2,6 +2,7 @@ package com.github.aer0119.traveltool.domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class EventPlan {
@@ -67,8 +68,8 @@ public class EventPlan {
         this.endDate = endDate;
     }
 
-    public ArrayList<EventContent> getEventContents() {
-        return eventContents;
+    public List<EventContent> getEventContents() {
+        return List.copyOf(eventContents);
     }
 }
 

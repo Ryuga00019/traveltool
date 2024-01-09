@@ -6,11 +6,13 @@ import java.util.UUID;
 
 public class EventPlan {
     private final UUID eventPlanId; //num
-    private String placeName; //Map name
-    private String description;
+    private String placeName;
+    private String description;  //setsu
     private LocalDate startDate; //旅行初日
     private LocalDate endDate; //旅行最終日
     private final ArrayList<EventContent> eventContents;
+
+
 
     public EventPlan() {
         this.eventPlanId = UUID.randomUUID();
@@ -63,6 +65,10 @@ public class EventPlan {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public ArrayList<EventContent> getEventContents() {
+        return eventContents;
     }
 }
 

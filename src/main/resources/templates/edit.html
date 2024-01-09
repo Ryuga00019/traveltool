@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+</head>
+<body>
+
+<div>
+    <div th:text="${eventplan.getPlaceName()}"></div>
+    <div th:each="content : ${eventplan.getEventContents()}">
+        <p th:text="${content.getContentName()}"></p>
+        <p th:text="${content.getStartDateTime()}"></p>
+    </div>
+</div>
+
+<ul >
+
+</ul>
+
+</body>
+</html>

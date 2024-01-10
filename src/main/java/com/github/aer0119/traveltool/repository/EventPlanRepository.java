@@ -46,6 +46,7 @@ public class EventPlanRepository {
     }
 
     public void save(EventPlan eventPlan) {
+        addCache(eventPlan);
         String sql = "INSERT INTO event_plan(plan_id, place_name, description, start_date, end_date, event_contents) " +
                 "VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE " +
                 "place_name = VALUES(place_name), description = VALUES(description), " +
@@ -70,16 +71,25 @@ public class EventPlanRepository {
         String sql = "SELECT * FROM event_plan WHERE plan_id=?";
         var result = jdbcClient.sql(sql).params(planId).query(new EventPlanRowMapper()).optional();
         if (result.isPresent()) {
-            cachedPlan.put(result.get().getEventPlanId(), result.get());
+            addCache(result.get());
             return result.get();
         }
         return null;
     }
 
     public void delete(EventPlan eventPlan) {
-        cachedPlan.remove(eventPlan.getEventPlanId());
+        removeCache(eventPlan);
         String sql = "DELETE FROM event_plan WHERE plan_id=?";
         jdbcClient.sql(sql).param(eventPlan.getEventPlanId()).update();
+    }
+
+    private void addCache(EventPlan eventPlan) {
+        if (cachedPlan.containsKey(eventPlan.getEventPlanId())) return;
+        cachedPlan.put(eventPlan.getEventPlanId(), eventPlan);
+    }
+
+    private void removeCache(EventPlan eventPlan) {
+        cachedPlan.remove(eventPlan.getEventPlanId());
     }
 
     private static class EventPlanRowMapper implements RowMapper<EventPlan> {

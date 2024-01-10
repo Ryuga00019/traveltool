@@ -2,13 +2,13 @@ package com.github.aer0119.traveltool.controller;
 
 import com.github.aer0119.traveltool.domain.EventContent;
 import com.github.aer0119.traveltool.domain.EventPlan;
+import com.github.aer0119.traveltool.repository.EventPlanRepository;
 import com.github.aer0119.traveltool.service.TravelPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,18 +25,9 @@ public class TravelController {
     }
 
 
-    @GetMapping("/edit")
-    public String index(Model model){
-        var list=new ArrayList<EventContent>();
-        var content = new EventContent();
-        content.setContentName("abc");
-        content.setDescription("setumei");
-        content.setStartDateTime(LocalDateTime.now());
-        content.setEndDateTime(LocalDateTime.now());
-        list.add(content);
-        var eventPlan= new EventPlan(UUID.randomUUID(),"nn","setumei", LocalDate.now(),LocalDate.now(),list);
-        model.addAttribute("eventplan",eventPlan);
-        return "edit";
+    @GetMapping("/")
+    public String index(Model model) {
+        return "/";
     }
 
     @GetMapping("/create")
@@ -48,9 +39,20 @@ public class TravelController {
         model.addAttribute("endDay", "LastDay");
         return "createplan";
     }
+
     @PostMapping("/create/save")
     public String createSave(@ModelAttribute EventPlan eventplan) {
+        //TODO("ここで保存")
+        return "redirect:/edit?planId=" + eventplan.getEventPlanId().toString();
+    }
 
-        return "redirect:/edit";
+    @GetMapping("/edit")
+    public String edit(Model model, @RequestParam String planId) {
+        return "";
+    }
+
+    @GetMapping("/view")
+    public String view(Model model, @RequestParam String planId) {
+        return "";
     }
 }

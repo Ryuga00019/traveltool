@@ -1,8 +1,11 @@
 package com.github.aer0119.traveltool.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@JsonSerialize
 public class EventContent {
     private final UUID eventPlanItemId; //dayID > 1日目、2日目 >startDateTime-endDateTime <<<ちがう。
     private String contentName; //place name

@@ -26,6 +26,9 @@ dependencies {
 	implementation 'org.webjars.bower:moment:2.19.1'
 	//implementation 'org.webjars.bower:fullcalendar:3.5.1'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

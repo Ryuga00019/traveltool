@@ -25,18 +25,9 @@ public class TravelController {
     }
 
 
-    @GetMapping("/edit")
+    @GetMapping("/")
     public String index(Model model){
-        var list=new ArrayList<EventContent>();
-        var content = new EventContent();
-        content.setContentName("abc");
-        content.setDescription("setumei");
-        content.setStartDateTime(LocalDateTime.now());
-        content.setEndDateTime(LocalDateTime.now());
-        list.add(content);
-        var eventPlan= new EventPlan(UUID.randomUUID(),"nn","setumei", LocalDate.now(),LocalDate.now(),list);
-        model.addAttribute("eventplan",eventPlan);
-        return "edit";
+        return "/";
     }
 
     @GetMapping("/create")
@@ -53,4 +44,19 @@ public class TravelController {
 
         return "redirect:/edit";
     }
+    @GetMapping("/edit")
+    public String edit(Model model){
+        var list=new ArrayList<EventContent>();
+        var content = new EventContent();
+        content.setContentName("abc");
+        content.setDescription("setumei");
+        content.setStartDateTime(LocalDateTime.now());
+        content.setEndDateTime(LocalDateTime.now());
+        list.add(content);
+        var eventPlan= new EventPlan(UUID.randomUUID(),"nn","setumei", LocalDate.now(),LocalDate.now(),list);
+        model.addAttribute("eventplan",eventPlan);
+        return "edit";
+    }
+
+    
 }

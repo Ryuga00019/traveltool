@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>予定入力フォーム</title>
+</head>
+<body>
+<p>予定入力</p>
+<form th:action="@{/edit/}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
+    <label>
+        部署
+        <select>
+            <option value="100" th:selected="${active == '100'}">管理部</option>
+            <option value="200" th:selected="${active == '200'}">人事部</option>
+            <option value="300" th:selected="${active == '300'}">営業部</option>
+            <option value="800" th:selected="${active == '800'}">情報システム部</option>
+        </select>
+    </label>
+</form>
+</body>
+</html>

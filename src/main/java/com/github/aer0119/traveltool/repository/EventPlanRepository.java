@@ -66,7 +66,7 @@ public class EventPlanRepository {
 
     }
 
-    public EventPlan find(UUID planId) {
+    public EventPlan find(UUID planId) { //IDを貰ってEventPlan を探してくる
         if (cachedPlan.containsKey(planId)) return cachedPlan.get(planId);
         String sql = "SELECT * FROM event_plan WHERE plan_id=?";
         var result = jdbcClient.sql(sql).params(planId).query(new EventPlanRowMapper()).optional();

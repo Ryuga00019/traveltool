@@ -68,6 +68,22 @@ public class EventPlan {
         this.endDate = endDate;
     }
 
+    public void addEventContent(EventContent eventContent){
+        eventContents.add(eventContent);
+    }
+
+    public void deleteEventContent(UUID contentId) {
+        eventContents.removeIf(it -> it.getEventPlanItemId() == contentId);
+    }
+
+    public EventContent getEventContent(UUID contentId) {
+        var eventContent = eventContents.stream()
+                .filter(it -> it.getEventPlanItemId() == contentId).findFirst();
+
+        return eventContent.orElse(null);
+    }
+
+
     public List<EventContent> getEventContents() {
         return List.copyOf(eventContents);
     }

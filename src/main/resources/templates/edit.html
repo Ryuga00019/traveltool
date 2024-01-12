@@ -6,17 +6,20 @@
 </head>
 <body>
 
-<div>
-    <div th:text="${eventplan.getPlaceName()}"></div>
-    <div th:each="content : ${eventplan.getEventContents()}">
-        <p th:text="${content.getContentName()}"></p>
-        <p th:text="${content.getStartDateTime()}"></p>
+<!--header-->
+
+<!--addButton-->
+<button><a href="/edit/form">予定を追加する</a> </button>
+
+<!--PlanList-->
+<div th:each="eventdate:${#numbers.sequence(1,eventDate+1)}">
+    <span>[[${eventdate}]]日目</span>
+    <div class="">
+
     </div>
 </div>
 
-<ul >
-
-</ul>
+<p>------------</p>
 
 </body>
 </html>

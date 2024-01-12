@@ -11,8 +11,8 @@
 <form th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
 
     <div>
-        <label for="places">[[${places}]]</label>
-        <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="places"/>
+        <label for="planname">PlanName</label>
+        <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname"/>
     </div>
     <div>
         <label for="startDay">[[${startDay}]]</label>

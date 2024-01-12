@@ -57,7 +57,14 @@ public class TravelController {
     @GetMapping("/edit/form")
     public String ContentForm(Model model){
         var eventContent= new EventContent();
+
         return "/contentform";
+    }
+
+    @PostMapping("/edit/save")
+    public String contentForm(){
+        //add method なのかな??
+        return "";
     }
 
     @GetMapping("/view")

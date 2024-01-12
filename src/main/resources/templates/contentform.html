@@ -6,14 +6,13 @@
 </head>
 <body>
 <p>予定入力</p>
-<form th:action="@{/edit/}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
+<form th:action="@{/edit/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
     <label>
-        部署
+        追加する日程選択 ドロップダウン
         <select>
-            <option value="100" th:selected="${active == '100'}">管理部</option>
-            <option value="200" th:selected="${active == '200'}">人事部</option>
-            <option value="300" th:selected="${active == '300'}">営業部</option>
-            <option value="800" th:selected="${active == '800'}">情報システム部</option>
+<!--            <th:block th:each=" : ${event}">-->
+<!--                <option th:each="" th:value="" th:text="" th:selected=""></option>-->
+<!--            </th:block>-->
         </select>
     </label>
 </form>

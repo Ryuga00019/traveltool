@@ -8,12 +8,16 @@
 
 <!--header-->
 
+
+<!--startDate - endDate-->
+<p th:text="${eventPlan.startDate} + '---------' + ${eventPlan.endDate}"></p>
+
 <!--addButton-->
-<button><a href="/edit/form">予定を追加する</a> </button>
+<button onclick="location.href='/edit/form'">予定を追加する</button><br>
 
 <!--PlanList-->
 <div th:each="eventdate:${#numbers.sequence(1,eventDate+1)}">
-    <span>[[${eventdate}]]日目</span>
+    <span th:text="${eventdate} +'日目'"></span>
     <div class="">
 
     </div>

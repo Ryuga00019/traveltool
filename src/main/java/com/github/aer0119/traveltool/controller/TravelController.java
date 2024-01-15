@@ -57,14 +57,14 @@ public class TravelController {
     @GetMapping("/edit/form")
     public String ContentForm(Model model){
         var eventContent= new EventContent();
-
+        model.addAttribute("eventContent", eventContent);
         return "/contentform";
     }
 
     @PostMapping("/edit/save")
-    public String contentForm(){
+    public String contentForm(@ModelAttribute EventPlan eventplan){
         //add method なのかな??
-        return "";
+        return "redirect:/edit?planId=" + eventplan.getEventPlanId().toString();
     }
 
     @GetMapping("/view")

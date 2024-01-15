@@ -6,15 +6,48 @@
 </head>
 <body>
 <p>予定入力</p>
-<form th:action="@{/edit/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
-    <label>
-        追加する日程選択 ドロップダウン
-        <select>
-<!--            <th:block th:each=" : ${event}">-->
-<!--                <option th:each="" th:value="" th:text="" th:selected=""></option>-->
-<!--            </th:block>-->
+<form th:action="@{/edit/save}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
+
+<!--    予定追加-->
+<!--    予定タイトル-->
+    <label for="title-content">タイトル</label>
+    <input type="text" id="title-content" th:field="*{contentName}">
+
+<!--    予定追加日-->
+    <label for="date-select">予定の追加日</label>
+    <div>
+        <select id="date-select" >
+            <th:block th:each="eventdate:${#numbers.sequence(1,6)}">
+                <option th:value="selectdate" >[[${eventdate}]]日目  yy/mm/dd</option>
+            </th:block>
         </select>
-    </label>
+    </div>
+
+<!--    予定テキスト-->
+    <div>
+        <label for="desc-content">この日の予定はなにか</label>
+        <div>
+            <textarea rows="3" cols="30" th:field="*{description}" id="desc-content"></textarea>
+        </div>
+    </div>
+
+<!--    予定開始時間-->
+    <div>
+        <label for="dateTime-start">開始時刻</label>
+        <div>
+            <input type="time" id="dateTime-start" th:field="*{startDateTime}">
+        </div>
+    </div>
+<!--    予定終了時間-->
+    <div>
+        <label for="dateTime-end">終了時刻</label>
+        <div>
+            <input type="time" id="dateTime-end" th:field="*{endDateTime}">
+        </div>
+    </div>
+
+    <button type="submit" value="submit">決定</button>
+
 </form>
 </body>
 </html>

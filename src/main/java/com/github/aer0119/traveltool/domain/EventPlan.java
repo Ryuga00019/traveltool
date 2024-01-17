@@ -1,9 +1,10 @@
 package com.github.aer0119.traveltool.domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 public class EventPlan {
     private final UUID eventPlanId; //num
@@ -83,6 +84,27 @@ public class EventPlan {
         return eventContent.orElse(null);
     }
 
+    public Map<Integer ,ArrayList<EventContent>> getSortedContents() {
+        var between = (int) ChronoUnit.DAYS.between(startDate, endDate);
+        Map<Integer, ArrayList<EventContent>> result = new HashMap<>();
+
+        for (var i = 1; i <= between; i++) result.put(i, new ArrayList<>());
+
+        var contents = new ArrayList<>(List.copyOf(eventContents));
+        var comparator = new Comparator<EventContent>() {
+            @Override
+            public int compare(EventContent o1, EventContent o2) {
+                return o1.getStartTime().compareTo(o2.getStartTime());
+            }
+        };
+        contents.sort(comparator);
+
+        for (var content: contents) {
+            result.get(content.getDay()).add(content);
+        }
+
+        return result;
+    }
 
     public List<EventContent> getEventContents() {
         return List.copyOf(eventContents);

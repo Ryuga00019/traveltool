@@ -6,19 +6,21 @@
 </head>
 <body>
 <p>予定入力</p>
-<form th:action="@{/edit/save}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
+<form th:action="@{save}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
 
 <!--    予定追加-->
 <!--    予定タイトル-->
     <label for="title-content">タイトル</label>
-    <input type="text" id="title-content" th:field="*{contentName}">
+    <div>
+        <input type="text" id="title-content" th:field="*{contentName}">
+    </div>
 
 <!--    予定追加日-->
     <label for="date-select">予定の追加日</label>
     <div>
-        <select id="date-select" >
+        <select id="date-select" th:field="*{day}" >
             <th:block th:each="eventdate:${#numbers.sequence(1,6)}">
-                <option th:value="selectdate" >[[${eventdate}]]日目  yy/mm/dd</option>
+                <option th:value="${eventdate}" >[[${eventdate}]]日目  yy/mm/dd</option>
             </th:block>
         </select>
     </div>
@@ -35,14 +37,14 @@
     <div>
         <label for="dateTime-start">開始時刻</label>
         <div>
-            <input type="time" id="dateTime-start" th:field="*{startDateTime}">
+            <input type="time" id="dateTime-start" th:field="*{startTime}">
         </div>
     </div>
 <!--    予定終了時間-->
     <div>
         <label for="dateTime-end">終了時刻</label>
         <div>
-            <input type="time" id="dateTime-end" th:field="*{endDateTime}">
+            <input type="time" id="dateTime-end" th:field="*{endTime}">
         </div>
     </div>
 

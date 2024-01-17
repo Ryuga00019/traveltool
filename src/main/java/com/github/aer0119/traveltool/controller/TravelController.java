@@ -42,29 +42,34 @@ public class TravelController {
     @PostMapping("/create/save")
     public String createSave(@ModelAttribute EventPlan eventplan) {
         eventPlanRepository.save(eventplan);
-        return "redirect:/edit?planId=" + eventplan.getEventPlanId().toString();
+        return "redirect:/" + eventplan.getEventPlanId().toString() + "/edit";
     }
 
-    @GetMapping("/edit")
-    public String edit(Model model, @RequestParam String planId) {
+    @GetMapping("/{planId}/edit")
+    public String edit(Model model, @PathVariable String planId) {
         var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
         var eventDate = ChronoUnit.DAYS.between(eventPlan.getStartDate(), eventPlan.getEndDate());
+        var sortedContents = eventPlan.getSortedContents();
         model.addAttribute("eventPlan", eventPlan);
         model.addAttribute("eventDate", eventDate);
+        model.addAttribute("sortedContents", sortedContents);
         return "/edit";
     }
 
-    @GetMapping("/edit/form")
-    public String ContentForm(Model model){
+    @GetMapping("/{planId}/edit/form")
+    public String contentForm(Model model){
         var eventContent= new EventContent();
         model.addAttribute("eventContent", eventContent);
         return "/contentform";
     }
 
-    @PostMapping("/edit/save")
-    public String contentForm(@ModelAttribute EventPlan eventplan){
-        //add method なのかな??
-        return "redirect:/edit?planId=" + eventplan.getEventPlanId().toString();
+    @PostMapping("/{planId}/edit/save")
+    public String contentForm(@ModelAttribute EventContent eventContent, @PathVariable String planId){
+        var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
+        if (eventPlan.getEventContent(eventContent.getEventPlanItemId()) == null) {
+            eventPlan.addEventContent(eventContent);
+        }
+        return "redirect:/" + planId + "/edit";
     }
 
     @GetMapping("/view")

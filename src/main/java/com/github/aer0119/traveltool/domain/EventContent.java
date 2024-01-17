@@ -10,7 +10,6 @@ public class EventContent {
     private final UUID eventPlanItemId; //dayID > 1日目、2日目 >startDateTime-endDateTime <<<ちがう。
     private String contentName; //place name
     private String description;
-
     private int day;
     private LocalTime startTime; //00:00 - 24:00 滞在、経過時間(開始)
     private LocalTime endTime; //00:00 - 24:00 滞在、経過時間(終了)

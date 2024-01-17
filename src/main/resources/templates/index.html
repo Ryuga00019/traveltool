@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>index</title>
-    <meta charset="utf-8" />
-</head>
+<head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
+
 <!-- 通常のコメント ブラウザでも表示されます． -->
 <!--/* Thymeleafのコメント ブラウザには表示されません */-->
 <body>
-
-
 <!--Header-->
+<div th:replace="/fragment/header :: header"></div>
 
-<h1>旅行計画webサイト</h1>
 <!--ボタン -> CreatePlan-->
-<button onclick="location.href='/create'">プラン作成を始める</button><br>
+<button onclick="location.href='/create'" id="first-button">プラン作成を始める</button><br>
+
+<!--footer-->
 </body>
 </html>

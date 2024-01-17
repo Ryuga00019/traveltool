@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <title>edit</title>
 </head>
 <body>
@@ -16,12 +17,12 @@
 <button onclick="location.href='edit/form'">予定を追加する</button><br>
 
 <!--PlanList-->
-<div th:each="eventdate:${#numbers.sequence(1,eventDate+1)}">
-    <span th:text="${eventdate} +'日目'"></span>
-    <div>[[${sortedContents.get(eventdate)}]]</div>
+<div th:each="eventdate:${#numbers.sequence(0,eventDate)}">
+    <span th:text="${eventdate}+1 +'日目'"></span>
+<!--    <div>[[${sortedContents.get(eventdate)}]]</div>-->
     <div th:each="content: ${sortedContents.get(eventdate)}">
         <p>[[${content.getContentName()}]]</p>
-        <p>[[${content.getDay()}]]</p>
+        <p>[[${content.getDay()}+1]]</p>
         <p>[[${content.getStartTime()}]]</p>
         <p>[[${content.getDescription()}]]</p>
         <p>---------------------------------------------------</p>

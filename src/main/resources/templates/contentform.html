@@ -19,8 +19,8 @@
     <label for="date-select">予定の追加日</label>
     <div>
         <select id="date-select" th:field="*{day}" >
-            <th:block th:each="eventdate:${#numbers.sequence(1,6)}">
-                <option th:value="${eventdate}" >[[${eventdate}]]日目  yy/mm/dd</option>
+            <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
+                <option th:value="${eventdate}" th:text="${eventdate}+1">日目  yy/mm/dd</option>
             </th:block>
         </select>
     </div>

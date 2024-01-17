@@ -57,8 +57,11 @@ public class TravelController {
     }
 
     @GetMapping("/{planId}/edit/form")
-    public String contentForm(Model model){
+    public String contentForm(Model model,@PathVariable String planId){
+        var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
+        var eventDate = ChronoUnit.DAYS.between(eventPlan.getStartDate(), eventPlan.getEndDate());
         var eventContent= new EventContent();
+        model.addAttribute("eventDate", eventDate);
         model.addAttribute("eventContent", eventContent);
         return "/contentform";
     }

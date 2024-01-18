@@ -5,6 +5,7 @@ import com.github.aer0119.traveltool.domain.EventPlan;
 import com.github.aer0119.traveltool.repository.EventPlanRepository;
 import com.github.aer0119.traveltool.service.TravelPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,23 +57,46 @@ public class TravelController {
         return "/edit";
     }
 
-    @GetMapping("/{planId}/edit/form")
+    //@GetMapping("/{planId}/edit/form")
+    @GetMapping("/{planId}/addcontent")
     public String contentForm(Model model,@PathVariable String planId){
         var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
         var eventDate = ChronoUnit.DAYS.between(eventPlan.getStartDate(), eventPlan.getEndDate());
         var eventContent= new EventContent();
+        System.out.println("=======" + eventContent.getEventPlanItemId() + "=============");
         model.addAttribute("eventDate", eventDate);
         model.addAttribute("eventContent", eventContent);
         return "/contentform";
     }
 
-    @PostMapping("/{planId}/edit/save")
-    public String contentForm(@ModelAttribute EventContent eventContent, @PathVariable String planId){
+    //@PostMapping("/{planId}/edit/save")
+    @PostMapping("/{planId}/savecontent")
+    public String contentForm(@ModelAttribute EventContent eventContent, @PathVariable String planId, @RequestParam(required = false) String contentId){
         var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
-        if (eventPlan.getEventContent(eventContent.getEventPlanItemId()) == null) {
-            eventPlan.addEventContent(eventContent);
+        var content = eventPlan.getEventContent(UUID.fromString(contentId));
+        if (content != null) {
+            content.setContentName(eventContent.getContentName());
+            content.setDescription(eventContent.getDescription());
+            content.setDay(eventContent.getDay());
+            content.setStartTime(eventContent.getStartTime());
+            content.setEndTime(eventContent.getEndTime());
+            return "redirect:/" + planId + "/edit";
         }
+        eventPlan.addEventContent(eventContent);
         return "redirect:/" + planId + "/edit";
+    }
+
+    @GetMapping("/{planId}/editcontent")
+    public String contentEdit(Model model, @PathVariable String planId, @RequestParam String contentId) {
+        var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
+        var eventDate = ChronoUnit.DAYS.between(eventPlan.getStartDate(), eventPlan.getEndDate());
+        var eventContent= eventPlan.getEventContent(UUID.fromString(contentId));
+        System.out.println("==============");
+        System.out.println(eventContent.getEventPlanItemId());
+        System.out.println("==============");
+        model.addAttribute("eventDate", eventDate);
+        model.addAttribute("eventContent", eventContent);
+        return "/contentform";
     }
 
     @GetMapping("/view")

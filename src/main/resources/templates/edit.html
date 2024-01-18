@@ -14,7 +14,7 @@
 <p th:text="${eventPlan.startDate} + '  ---------  ' + ${eventPlan.endDate}"></p>
 
 <!--addButton-->
-<button onclick="location.href='edit/form'">予定を追加する</button><br>
+<button onclick="location.href='addcontent'">予定を追加する</button><br>
 
 <!--PlanList-->
 <div th:each="eventdate:${#numbers.sequence(0,eventDate)}">
@@ -25,7 +25,9 @@
         <p>[[${content.getDay()}+1]]</p>
         <p>[[${content.getStartTime()}]]</p>
         <p>[[${content.getDescription()}]]</p>
+        <p>[[${content.getEventPlanItemId()}]]</p>
         <p>---------------------------------------------------</p>
+        <a href="/editcontent" th:href="@{editcontent(contentId=${content.getEventPlanItemId()})}">test</a>
 
     </div>
     <div class=""> <!-- day plan table -->

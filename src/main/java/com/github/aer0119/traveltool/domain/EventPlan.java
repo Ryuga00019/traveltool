@@ -79,7 +79,7 @@ public class EventPlan {
 
     public EventContent getEventContent(UUID contentId) {
         var eventContent = eventContents.stream()
-                .filter(it -> it.getEventPlanItemId() == contentId).findFirst();
+                .filter(it -> it.getEventPlanItemId().equals(contentId)).findFirst();
 
         return eventContent.orElse(null);
     }
@@ -87,7 +87,6 @@ public class EventPlan {
     public Map<Integer ,ArrayList<EventContent>> getSortedContents() {
         var between = (int) ChronoUnit.DAYS.between(startDate, endDate);
         Map<Integer, ArrayList<EventContent>> result = new HashMap<>();
-
         for (var i = 1; i <= between; i++) result.put(i, new ArrayList<>());
 
         var contents = new ArrayList<>(List.copyOf(eventContents));

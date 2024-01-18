@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>予定入力</p>
-<form th:action="@{save}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
+<form th:action="@{savecontent(contentId=${eventContent.getEventPlanItemId()})}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
 
 <!--    予定追加-->
 <!--    予定タイトル-->

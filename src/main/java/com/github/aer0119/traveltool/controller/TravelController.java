@@ -99,6 +99,11 @@ public class TravelController {
         return "/contentform";
     }
 
+    @GetMapping("/shopMap")
+    public String getShopMap(Model model) {
+        return "map";
+    }
+
     @GetMapping("/view")
     public String view(Model model, @RequestParam String planId) {
         return "";

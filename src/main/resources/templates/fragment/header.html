@@ -1,6 +1,11 @@
 <header xmlns:th="http://www.thymeleaf.org" th:fragment="header_fragment">
-    <div style="background-color:green">
-        <h1> 旅行計画webサイト </h1>
-        <h2>Ver : Kozu Islands</h2>
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <div class="header">
+        <div>
+            <img th:src="@{/css/img/LogoSample.png}" class="container">
+        </div>
+        <div>
+            <h1> travel schedule </h1>
+        </div>
     </div>
 </header>

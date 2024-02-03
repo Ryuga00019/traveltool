@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Google Maps API検索</title>
-</head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')"/>
 <body>
 <input type="text" id="locationInput" placeholder="土地名を入力してください">
 <button onclick="searchLocation()">検索</button>

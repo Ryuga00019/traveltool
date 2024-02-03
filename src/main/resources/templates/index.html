@@ -7,8 +7,13 @@
 <div th:replace="/fragment/header :: header"></div>
 
 <!--ボタン -> CreatePlan-->
-<button onclick="location.href='/create'" id="first-button">プラン作成を始める</button><br>
+<div>
+    <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" onclick="location.href='/create'" id="first-button">
+        プラン作成を始める
+    </button>
+</div>
 
 <!--footer-->
+<div th:replace="/fragment/footer :: footer"></div>
 </body>
 </html>

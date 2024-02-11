@@ -1,7 +1,10 @@
-.header{
-    background-color:green;
+header h1{
+    font-size:50px;
+    margin-top:5px;
 }
 .container{
     aspect-ratio: 1/1;
     width:5%;
 }
+
+

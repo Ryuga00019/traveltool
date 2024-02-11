@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" style="width:100%;">
-<head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
+<head th:replace="/fragment/head :: head_fragment(title = 'sample')"></head>
 
 <body>
-<!--Header-->
-<div th:replace="/fragment/header :: header"></div>
+<!--background img-->
+    <div class="back_img">
+        <!--Header-->
+        <div th:replace="/fragment/header :: header"></div>
 
-<div class="bg_test">
-    <div class="bg_test-text">
-        背景画像を設定します
+            <!--main-->
+            <section class="main">
+                <!--ボタン -> CreatePlan-->
+                <div style="padding-top:70px;">
+                    <a id="start" href='create'>
+                        プラン作成を始める
+                    </a>
+                </div>
+                <p style="font-size:2em">
+                    説明
+                </p>
+            </section>
+            <!--/main-->
+
+        <!--footer-->
+        <div th:replace="/fragment/footer :: footer"></div>
     </div>
 
-<!--ボタン -> CreatePlan-->
-    <div>
-        <button class=" " onclick="location.href='/create'"
-                style=" font-size: 300%;">
-            プラン作成を始める
-<!--            <img th:src="@{/css/img/LogoSample.png}">-->
-        </button>
-    </div>
-</div>
-<!--footer-->
-<div th:replace="/fragment/footer :: footer"></div>
 </body>
 </html>

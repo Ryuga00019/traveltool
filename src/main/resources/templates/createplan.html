@@ -3,30 +3,38 @@
 <head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
 
 <body>
-<!--Header-->
-<div th:replace="/fragment/header :: header"></div>
+<!--background img-->
+<div class="back_img">
+    <!--Header-->
+    <div th:replace="/fragment/header :: header"></div>
 
-<h2>create plan</h2>
+    <!--main-->
+    <section class="main">
+        <!--ボタン -> CreatePlan-->
+        <h2>create plan</h2>
 
-<form th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
+        <form th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
 
-    <div>
-        <label for="planname">PlanName</label>
-        <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname"/>
-    </div>
-    <div>
-        <label for="startDay">[[${startDay}]]</label>
-        <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay"/>
-    </div>
-    <div>
-        <label for="endDay">[[${endDay}]]</label>
-        <input type="date" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay"/>
-    </div>
-    <button type="submit">決定</button>
-</form>
+            <div>
+                <label for="planname">PlanName</label>
+                <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname"/>
+            </div>
+            <div>
+                <label for="startDay">[[${startDay}]]</label>
+                <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay"/>
+            </div>
+            <div>
+                <label for="endDay">[[${endDay}]]</label>
+                <input type="date" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay"/>
+            </div>
+            <button type="submit">決定</button>
+        </form>
+    </section>
+    <!--footer-->
+    <div th:replace="/fragment/footer :: footer"></div>
+</div>
 
-<!--footer-->
-<div th:replace="/fragment/footer :: footer"></div>
+
 
 </body>
 </html>

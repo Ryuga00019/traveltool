@@ -1,28 +1,54 @@
 body{
 padding:0;
 margin:0;
+    height:100vh;
+
 }
 h1{
+font-size:30px;
 padding:0;
 margin:0;
 }
 
-/*background image---------------*/
-.bg_test-text {
-    border:  solid 1px;                             /* 枠線指定 */
-    display:  inline-block;                         /* インラインブロックにする */
-    padding: 10px 20px;                             /* 余白指定 */
-    background-color: rgba(255, 255, 255, 0.7);     /* 背景色指定 */
-}
-.bg_test {
-    aspect-ratio:4/9;
+/* --------background img ---------*/
+.back_img {
+    padding:0 3% 0 3%;
+    height:100vh;
     text-align:  center;    /* 文字中央寄せ */
-    padding:  150px;        /* 余白指定 */
     border: solid 2px;      /* 枠線指定 */
+    background-image: url(img/background.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
 }
-.bg_test {
-    background-image: url(img/background1.webp);    /* 背景画像指定 */
+.main {
+    width:auto;
+    height:80%;
+    overflow: auto;
+    padding:40px;
+    border:  solid 1px;                             /* 枠線指定 */
+    margin: 15px 2% 0 2%;                             /* 余白指定 */
+    background-color: rgba(255, 255, 255, 0.562);
 }
+
+/*--------- main */
+#start{
+    padding: 25px 40px;
+    border-radius: 10px;
+    Display: inline-block;
+    color: black;
+    border: 5px solid black;
+    border-radius: 50rem;
+    font-size:3em;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 
 /**/
 #map {

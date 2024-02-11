@@ -3,62 +3,64 @@
 <head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
 
 <body>
-<!--Header-->
-<div th:replace="/fragment/header :: header"></div>
+<!--background img-->
+<div class="back_img">
+    <!--Header-->
+    <div th:replace="/fragment/header :: header"></div>
 
+    <!--main-->
+    <section class="main">
+        <p>予定入力</p>
+        <form th:action="@{savecontent(contentId=${eventContent.getEventPlanItemId()})}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
 
-<p>予定入力</p>
-<form th:action="@{savecontent(contentId=${eventContent.getEventPlanItemId()})}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
+            <!--    予定追加-->
+            <!--    予定タイトル-->
+            <label for="title-content">タイトル</label>
+            <div>
+                <input type="text" id="title-content" th:field="*{contentName}">
+            </div>
 
-<!--    予定追加-->
-<!--    予定タイトル-->
-    <label for="title-content">タイトル</label>
-    <div>
-        <input type="text" id="title-content" th:field="*{contentName}">
-    </div>
+            <!--    予定追加日-->
+            <label for="date-select">予定の追加日</label>
+            <div>
+                <select id="date-select" th:field="*{day}" >
+                    <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
+                        <option th:value="${eventdate}" th:text="${eventdate}+1">日目  yy/mm/dd</option>
+                    </th:block>
+                </select>
+            </div>
 
-<!--    予定追加日-->
-    <label for="date-select">予定の追加日</label>
-    <div>
-        <select id="date-select" th:field="*{day}" >
-            <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
-                <option th:value="${eventdate}" th:text="${eventdate}+1">日目  yy/mm/dd</option>
-            </th:block>
-        </select>
-    </div>
+            <!--    予定テキスト-->
+            <div>
+                <label for="desc-content">この日の予定はなにか</label>
+                <div>
+                    <textarea rows="3" cols="30" th:field="*{description}" id="desc-content"></textarea>
+                </div>
 
-<!--    予定テキスト-->
-    <div>
-        <label for="desc-content">この日の予定はなにか</label>
-        <div>
-            <textarea rows="3" cols="30" th:field="*{description}" id="desc-content"></textarea>
-        </div>
+            </div>
 
-    </div>
+            <!--    予定開始時間-->
+            <div>
+                <label for="dateTime-start">開始時刻</label>
+                <div>
+                    <input type="time" id="dateTime-start" th:field="*{startTime}">
+                </div>
+            </div>
+            <!--    予定終了時間-->
+            <div>
+                <label for="dateTime-end">終了時刻</label>
+                <div>
+                    <input type="time" id="dateTime-end" th:field="*{endTime}">
+                </div>
+            </div>
 
-<!--    予定開始時間-->
-    <div>
-        <label for="dateTime-start">開始時刻</label>
-        <div>
-            <input type="time" id="dateTime-start" th:field="*{startTime}">
-        </div>
-    </div>
-<!--    予定終了時間-->
-    <div>
-        <label for="dateTime-end">終了時刻</label>
-        <div>
-            <input type="time" id="dateTime-end" th:field="*{endTime}">
-        </div>
-    </div>
+            <button type="submit" value="submit">決定</button>
 
-    <button type="submit" value="submit">決定</button>
-
-</form>
-<a href="/Map">Google Maps</a>
-
-
-<!--footer-->
-<div th:replace="/fragment/footer :: footer"></div>
-
+        </form>
+        <a href="/Map">Google Maps</a>
+    </section>
+    <!--footer-->
+    <div th:replace="/fragment/footer :: footer"></div>
+</div>
 </body>
 </html>

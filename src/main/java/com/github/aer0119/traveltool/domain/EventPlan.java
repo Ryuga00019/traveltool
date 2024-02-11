@@ -8,11 +8,11 @@ import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 public class EventPlan {
     private final UUID eventPlanId; //num
-    private String placeName;
+    private String placeName; //という名のtitle
     private String description;  //setsu
     private LocalDate startDate; //旅行初日
     private LocalDate endDate; //旅行最終日
-    private final ArrayList<EventContent> eventContents;
+    private final ArrayList<EventContent> eventContents; //Contentデータ
 
 
 
@@ -87,7 +87,7 @@ public class EventPlan {
     public Map<Integer ,ArrayList<EventContent>> getSortedContents() {
         var between = (int) ChronoUnit.DAYS.between(startDate, endDate);
         Map<Integer, ArrayList<EventContent>> result = new HashMap<>();
-        for (var i = 1; i <= between; i++) result.put(i, new ArrayList<>());
+        for (var i = 0; i <= between; i++) result.put(i, new ArrayList<>());
 
         var contents = new ArrayList<>(List.copyOf(eventContents));
         var comparator = new Comparator<EventContent>() {

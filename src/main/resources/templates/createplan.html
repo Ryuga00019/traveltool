@@ -3,6 +3,7 @@
 <head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
 
 <body>
+
 <!--background img-->
 <div class="back_img">
     <!--Header-->
@@ -11,22 +12,31 @@
     <!--main-->
     <section class="main">
         <!--ボタン -> CreatePlan-->
-        <h2>create plan</h2>
+        <h2>スケジュールを作成</h2>
+        <form class="createplan" th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}" >
 
-        <form th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}">
+            <div class="planform">
+                <label for="planname">旅行表の名前</label>
+                <div>
+                    <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname" placeholder="タイトル"/>
+                </div>
+            </div>
+            <div class="planform">
+                <label for="startDay">旅行出発日</label>
+                <div>
+<!--                    <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay" value="" placeholder="出発日"/>-->
+                    <input class="flatpickr" type="text" th:field="*{startDate}" name="startday" placeholder="出発日" readonly="readonly" id="startDay">
+                </div>
+            </div>
+            <p style="font-size:30px; text-align:center">↓</p>
+            <div class="planform">
+                <label for="endDay">旅行終了日</label>
+                <div>
+<!--                    <input type="text" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay" placeholder="終了日"/>-->
+                    <input class="flatpickr" type="text" th:field="*{endDate}" name="endday" placeholder="終了日" readonly="readonly" id="endDay">
+                </div>
+            </div>
 
-            <div>
-                <label for="planname">PlanName</label>
-                <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname"/>
-            </div>
-            <div>
-                <label for="startDay">[[${startDay}]]</label>
-                <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay"/>
-            </div>
-            <div>
-                <label for="endDay">[[${endDay}]]</label>
-                <input type="date" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay"/>
-            </div>
             <button type="submit">決定</button>
         </form>
     </section>
@@ -35,6 +45,13 @@
 </div>
 
 
-
 </body>
+<script>
+    const config = {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+    }
+    flatpickr('.flatpickr', config);
+</script>
 </html>

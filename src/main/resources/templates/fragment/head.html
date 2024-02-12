@@ -1,6 +1,11 @@
 <head xmlns:th="http://www.thymeleaf.org" th:fragment="head_fragment(title)">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title th:text="${title}"></title>
     <!-- 各画面専用のcssを定義します -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+
 </head>

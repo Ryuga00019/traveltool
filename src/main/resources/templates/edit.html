@@ -3,45 +3,58 @@
 <head th:replace="/fragment/head :: head_fragment(title = 'サンプルアプリケーション')">
 
 <body>
+
 <!--background img-->
 <div class="back_img">
     <!--Header-->
     <div th:replace="/fragment/header :: header"></div>
 
-    <!--main-->
-    <section class="main">
-        <!--startDate - endDate-->
-        <p th:text="${eventPlan.startDate} + '  ---------  ' + ${eventPlan.endDate}"></p>
-
-        <!--addButton-->
-        <button onclick="location.href='addcontent'">予定を追加する</button><br>
-
-        <!--PlanList-->
-        <div th:each="eventdate:${#numbers.sequence(0,eventDate)}">
-            <span th:text="${eventdate}+1 +'日目'"></span>
-            <!--    <div>[[${sortedContents.get(eventdate)}]]</div>-->
-            <div th:each="content: ${sortedContents.get(eventdate)}">
-                <p>[[${content.getContentName()}]]</p>
-                <p>[[${content.getDay()}+1]]</p>
-                <p>[[${content.getStartTime()}]]</p>
-                <p>[[${content.getDescription()}]]</p>
-                <p>[[${content.getEventPlanItemId()}]]</p>
-                <p>---------------------------------------------------</p>
-                <a href="/editcontent" th:href="@{editcontent(contentId=${content.getEventPlanItemId()})}">test</a>
-
+    <div class="editMain">
+        <!--main-->
+        <section class="main">
+            <!--startDate - endDate-->
+            <div>
+                <p th:text="${eventPlan.startDate} + '  -  ' + ${eventPlan.endDate}"></p>
             </div>
-            <div class=""> <!-- day plan table -->
-                <table>
 
-                </table>
+            <!--addButton-->
+            <button onclick="location.href='addcontent'" id="addbutton">予定を追加する</button><br>
+
+            <!--PlanList-->
+            <div id="PlanList" th:each="eventdate:${#numbers.sequence(0,eventDate)}">
+                <p class="uk-label-success" id="listDay" th:text="${eventdate}+1 +'日目'"></p>
+                <!--    <div>[[${sortedContents.get(eventdate)}]]</div>-->
+                <div th:each="content: ${sortedContents.get(eventdate)}">
+                    <div class="contents-bg">
+                        <div class="uk-flex-inline" id="listMain">
+                            <span id="contentName">[[${content.getContentName()}]]</span>
+                            <div class="uk-flex-inline">
+                                <p>[[${content.getStartTime()}]] </p>
+                                <span>-</span>
+                                <p>[[${content.getEndTime()}]]</p>
+                            </div>
+                            <!--                <p>[[${content.getDay()}+1]]</p>-->
+                        </div>
+                        <div id="content-desc">
+                            <p>[[${content.getDescription()}]]</p>
+                        </div>
+                        <!--                <p>[[${content.getEventPlanItemId()}]]</p>-->
+                        <div id="content-edit">
+                            <a class="plan-border " href="/editcontent" th:href="@{editcontent(contentId=${content.getEventPlanItemId()})}">予定の編集</a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-        </div>
+        </section>
+    </div>
 
-        <p>------------</p>
-    </section>
     <!--footer-->
     <div th:replace="/fragment/footer :: footer"></div>
 </div>
-
 </body>
+<script>
+
+</script>
 </html>

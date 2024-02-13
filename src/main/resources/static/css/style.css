@@ -1,13 +1,14 @@
 body{
-padding:0;
-margin:0;
+    padding:0;
+    margin:0;
     height:100vh;
 
 }
 h1{
-padding:0;
-margin:0;
+    padding:0;
+    margin:0;
 }
+
 
 /* --------background img ---------*/
 .back_img {
@@ -26,13 +27,21 @@ margin:0;
     width:auto;
     height:75vh;
     overflow: auto;
-    padding:40px;
+    padding:2% 20px auto 20px;
     border:  solid 1px;                             /* 枠線指定 */
     margin: 15px 2% 0 2%;                             /* 余白指定 */
     background-color: rgba(255, 255, 255, 0.562);
 }
+.contents-bg{
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom:10px;
+}
+
 
 /*--------- main */
+label{
+ color:#666;
+}
 /*index*/
 #start{
     padding: 25px 40px;
@@ -53,24 +62,27 @@ margin:0;
     width:auto;
     height:auto
 }
+.type-flex{
+    display:flex;
+}
 .createplan .planform{
     width:100%;
     height:auto;
-    margin-bottom:20px
+    margin-bottom:15px;
 }
 .createplan label{
-    font-size:1.5em;
+    font-size:1em;
 }
 .createplan input{
-    width:70%;
+    width:60%;
     height:50px;
     text-align:center;
     padding: 0 10px;
     border-radius: 10px;
-    font-size:20px;
+    font-size:15px;
 }
 .createplan #title-content{
-    font-size: 15px;
+    font-size:15px;
     height:40px;
 }
 .createplan #title-contents{
@@ -80,27 +92,97 @@ margin:0;
     height:auto;
 }
 select{
-    width:60%;
+    width:40%;
     height:40px;
-    font-size:20px;
+    font-size:15px;
 }
 
 .createplan textarea{
-    width:90%;
-    height:60px;
+    width:60%;
+    height:70px;
     font-size:15px;
+    border: 2px solid #cccccc;
+    border-radius: 6px;
+}
+#changetext{
+    margin:0;
 }
 button{
-    width:90%;
+    width:70%;
     height:50px;
     border-radius: 10px;
     margin-top:10px;
+    font-size:20px;
 }
 #contentbutton{
-    margin-top:60px;
+    margin-top:30px;
 }
 
-/*edit*/
+/*-edit*/
+/*
+    oo年-月-日
+    のstyle
+    記入
+*/
+#addbutton{
+    margin-bottom:4%;
+}
+.editMain #PlanList{
+    padding: 0 5% 10px 5%;
+    color:black;
+}
+.plan-border{
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
+#listDay{
+    width:80px;
+    font-size:20px;
+    border-radius: 10px;
+    margin:0 0 10px 0;
+    color:black;
+}
+#listMain{
+    width:100%;
+    margin-bottom:5px;
+    color:pink;
+    justify-content: space-between;
+}
+#listMain *{
+    width:auto;
+}
+#listMain #contentName{
+    text-align:left;
+    width:50%;
+    font-size:20px;
+}
+listMain div{
+    justify-content: center;
+    width:100%;
+}
+#listMain div p{
+    margin:0 5% 0 0;
+    font-size:20px;
+}
+#listMain div span{
+    width:40px;
+    margin:0 5% 0 5%;
+    font-size:20px;
+ }
+#content-desc{
+    width:100%;
+    height:auto;
+}
+#content-desc p{
+    font-size:15px;
+    margin:0;
+    text-align:left;
+}
+#content-edit{
+    margin-top:5px;
+    text-align:right;
+}
+
 
 
 
@@ -111,7 +193,14 @@ button{
   width: 600px;
 }
 
-@media screen and (max-width:376px) {
+@media screen and (min-width:769px) {
 
+    .main .media-flex{
+        display:flex;
+    }
+    #listDay{
+        width:100px;
+        font-size:25px;
+    }
 
 }

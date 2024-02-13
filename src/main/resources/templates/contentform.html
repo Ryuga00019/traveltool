@@ -15,23 +15,26 @@
 
                 <!--    予定追加-->
                 <!--    予定タイトル-->
-                <div class="planform" id="title-contents">
-                    <label for="title-content">タイトル</label>
-                    <div>
-                        <input type="text" id="title-content" th:field="*{contentName}">
-                    </div>
+                <div class="media-flex">
+                    <section class="planform" id="title-contents">
+                        <label for="title-content">タイトル</label>
+                        <div>
+                            <input type="text" id="title-content" th:field="*{contentName}">
+                        </div>
+                    </section>
+                    <!--    予定追加日-->
+                    <section class="planform" id="date-selects">
+                        <label for="date-select">予定の追加日</label>
+                        <div>
+                            <select id="date-select" th:field="*{day}" >
+                                <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
+                                    <option th:value="${eventdate}" th:text="|${eventdate}|+1 + 日目">日目  yy/mm/dd</option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </section>
                 </div>
-                <!--    予定追加日-->
-                <div class="planform" id="date-selects">
-                    <label for="date-select">予定の追加日</label>
-                    <div>
-                        <select id="date-select" th:field="*{day}" >
-                            <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
-                                <option th:value="${eventdate}" th:text="|${eventdate}|+1 + 日目">日目  yy/mm/dd</option>
-                            </th:block>
-                        </select>
-                    </div>
-                </div>
+
                 <!--    予定テキスト-->
                 <div class="planform">
                     <label for="desc-content">予定の詳細</label>
@@ -40,26 +43,30 @@
                     </div>
                 </div>
 
-                <!--    予定開始時間-->
-                <div class="planform">
-                    <label for="dateTime-start">開始時刻</label>
-                    <div>
-                        <input class="flatpickr" type="text" th:field="*{startTime}" name="startdate" placeholder="予定の開始時刻" readonly="readonly" id="dateTime-start">
-    <!--                    <input type="time" id="dateTime-start" th:field="*{startTime}">-->
+                <section class="media-flex">
+                    <!--    予定開始時間-->
+                    <div class="planform">
+                        <label for="dateTime-start">開始時刻</label>
+                        <div>
+                            <input class="flatpickr" type="text" th:field="*{startTime}" name="startdate" placeholder="予定の開始時刻" readonly="readonly" id="dateTime-start">
+                            <!--                    <input type="time" id="dateTime-start" th:field="*{startTime}">-->
+                        </div>
                     </div>
-                </div>
-                <!--    予定終了時間-->
-                <div class="planform">
-                    <label for="dateTime-end">終了時刻</label>
-                    <div>
-                        <input class="flatpickr" type="text" th:field="*{endTime}" name="enddate" placeholder="予定の開始時刻" readonly="readonly" id="dateTime-end">
-<!--                        <input type="time" id="dateTime-end" th:field="*{endTime}">-->
+                    <p id="changetext"></p>
+                    <!--    予定終了時間-->
+                    <div class="planform">
+                        <label for="dateTime-end">終了時刻</label>
+                        <div>
+                            <input class="flatpickr" type="text" th:field="*{endTime}" name="enddate" placeholder="予定の開始時刻" readonly="readonly" id="dateTime-end">
+                            <!--                        <input type="time" id="dateTime-end" th:field="*{endTime}">-->
+                        </div>
                     </div>
-                </div>
+                </section>
+
                 <button type="submit" value="submit" id="contentbutton">決定</button>
             </form>
         </section>
-        <a href="/Map">Google Maps</a>
+<!--        <a href="/Map">Google Maps</a>-->
     </section>
     <!--footer-->
     <div th:replace="/fragment/footer :: footer"></div>
@@ -67,11 +74,39 @@
 </body>
 <script>
     const config = {
-  enableTime: true,
-  noCalendar: true,
-  dateFormat: "H:i",
-  time_24hr: true,
-}
-flatpickr('.flatpickr', config);
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+    }
+    flatpickr('.flatpickr', config);
+
+//responsive テキスト書き換え と css
+    $windowWidth = window.innerWidth;
+    $breakPointA = 480;
+    $breakPointB = 768;
+    var p=document.getElementById("changetext");
+
+    isMobileSize = ($windowWidth < $breakPointA);
+    isTabletSize = ($windowWidth <= $breakPointB) && ($windowWidth > $breakPointA);
+    isPcSize = ($windowWidth > $breakPointB);
+    if(isMobileSize){
+        //モバイルサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "↓";
+         p.style.fontSize='30px';
+    }
+    if(isTabletSize){
+        //タブレットサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "↓";
+        p.style.fontSize='40px';
+    }if(isPcSize){
+        //PCサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "⇒";
+        p.style.fontSize='60px';
+    }
+
+
+
+
 </script>
 </html>

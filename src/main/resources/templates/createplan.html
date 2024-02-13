@@ -21,22 +21,23 @@
                     <input type="text" th:field="*{placeName}" required minlength="2" maxlength="128" id="planname" placeholder="タイトル"/>
                 </div>
             </div>
-            <div class="planform">
-                <label for="startDay">旅行出発日</label>
-                <div>
-<!--                    <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay" value="" placeholder="出発日"/>-->
-                    <input class="flatpickr" type="text" th:field="*{startDate}" name="startday" placeholder="出発日" readonly="readonly" id="startDay">
+            <section class="media-flex">
+                <div class="planform">
+                    <label for="startDay">旅行出発日</label>
+                    <div>
+    <!--                    <input type="date" th:field="*{startDate}" required minlength="2" maxlength="128" id="startDay" value="" placeholder="出発日"/>-->
+                        <input class="flatpickr" type="text" th:field="*{startDate}" name="startday" placeholder="出発日" readonly="readonly" id="startDay">
+                    </div>
                 </div>
-            </div>
-            <p style="font-size:30px; text-align:center">↓</p>
-            <div class="planform">
-                <label for="endDay">旅行終了日</label>
-                <div>
-<!--                    <input type="text" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay" placeholder="終了日"/>-->
-                    <input class="flatpickr" type="text" th:field="*{endDate}" name="endday" placeholder="終了日" readonly="readonly" id="endDay">
+                <p id="changetext" ></p>
+                <div class="planform">
+                    <label for="endDay">旅行終了日</label>
+                    <div>
+    <!--                    <input type="text" th:field="*{endDate}" required minlength="2" maxlength="128" id="endDay" placeholder="終了日"/>-->
+                        <input class="flatpickr" type="text" th:field="*{endDate}" name="endday" placeholder="終了日" readonly="readonly" id="endDay">
+                    </div>
                 </div>
-            </div>
-
+            </section>
             <button type="submit">決定</button>
         </form>
     </section>
@@ -53,5 +54,31 @@
         dateFormat: "Y-m-d",
     }
     flatpickr('.flatpickr', config);
+
+
+//responsive テキスト書き換え と css
+    $windowWidth = window.innerWidth;
+    $breakPointA = 480;
+    $breakPointB = 768;
+    var p=document.getElementById("changetext");
+
+    isMobileSize = ($windowWidth < $breakPointA);
+    isTabletSize = ($windowWidth <= $breakPointB) && ($windowWidth > $breakPointA);
+    isPcSize = ($windowWidth > $breakPointB);
+    if(isMobileSize){
+        //モバイルサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "↓";
+         p.style.fontSize='30px';
+    }
+    if(isTabletSize){
+        //タブレットサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "↓";
+        p.style.fontSize='40px';
+    }if(isPcSize){
+        //PCサイズの場合の記述
+        document.getElementById("changetext").innerHTML = "⇒";
+        p.style.fontSize='60px';
+    }
+
 </script>
 </html>

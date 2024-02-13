@@ -10,13 +10,12 @@ version = '0.0.1-SNAPSHOT'
 java {
 	sourceCompatibility = '17'
 }
-
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-
 repositories {
 	mavenCentral()
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
 
 dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'

@@ -16,7 +16,7 @@ h1{
     height:100vh;
     text-align:  center;    /* 文字中央寄せ */
     border: solid 2px;      /* 枠線指定 */
-    background-image: url(img/background.webp);
+    background-image: url(img/background_phone2.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -25,16 +25,28 @@ h1{
 }
 .main {
     width:auto;
-    height:75vh;
+    height:80vh;
     overflow: auto;
-    padding:2% 20px auto 20px;
+    padding:2% 10px 0 10px;
     border:  solid 1px;                             /* 枠線指定 */
     margin: 15px 2% 0 2%;                             /* 余白指定 */
     background-color: rgba(255, 255, 255, 0.562);
 }
 .contents-bg{
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.7);
     margin-bottom:10px;
+    margin:auto;
+    margin-bottom:10px;
+}
+.plan-border{
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
+.bottom-border{
+    border-bottom:solid 1px #6666;
+}
+input,textarea,select{
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -57,23 +69,28 @@ label{
     text-align: center;
     text-transform: uppercase;
 }
-/*createplan , contentform*/
-.createplan{
+/*contentplan , contentform*/
+.contentplan{
     width:auto;
     height:auto
+    margin-top:10px;
 }
 .type-flex{
     display:flex;
 }
-.createplan .planform{
+#Title-Day{
+    justify-content: space-evenly;
+    align-items: center;
+}
+.contentplan .planform{
     width:100%;
     height:auto;
     margin-bottom:15px;
 }
-.createplan label{
+.contentplan label{
     font-size:1em;
 }
-.createplan input{
+.contentplan input{
     width:60%;
     height:50px;
     text-align:center;
@@ -81,23 +98,28 @@ label{
     border-radius: 10px;
     font-size:15px;
 }
-.createplan #title-content{
+.contentplan #title-contents{
+    height:auto;
+    width:50%;
+}
+.contentplan #title-content{
     font-size:15px;
     height:40px;
+    width:100%;
+    padding:0;
 }
-.createplan #title-contents{
+.contentplan #date-selects{
     height:auto;
-}
-.createplan #date-selects{
-    height:auto;
+    width:100px;
+    margin-right:10px;
+
 }
 select{
-    width:40%;
-    height:40px;
+    width:100%;
     font-size:15px;
 }
 
-.createplan textarea{
+.contentplan textarea{
     width:60%;
     height:70px;
     font-size:15px;
@@ -131,22 +153,25 @@ button{
     padding: 0 5% 10px 5%;
     color:black;
 }
-.plan-border{
-    border: 1px solid #cccccc;
-    border-radius: 2px;
-}
 #listDay{
-    width:80px;
+    width:fit-content;
     font-size:20px;
     border-radius: 10px;
-    margin:0 0 10px 0;
+    padding:0 5px 0 5px;
     color:black;
+    margin:0 0 5px 0;
+}
+#contentlist{
+    width:80%;
+    margin:0 5% 0 5%;
+}
+#content-inside{
 }
 #listMain{
     width:100%;
     margin-bottom:5px;
-    color:pink;
-    justify-content: space-between;
+    color:red;
+    justify-content: flex-start;
 }
 #listMain *{
     width:auto;
@@ -155,10 +180,13 @@ button{
     text-align:left;
     width:50%;
     font-size:20px;
+        margin: auto;
+    margin-left:10px;
 }
-listMain div{
+#listMain div{
+        margin-left: auto;
+        margin-right: 30px;
     justify-content: center;
-    width:100%;
 }
 #listMain div p{
     margin:0 5% 0 0;
@@ -169,20 +197,37 @@ listMain div{
     margin:0 5% 0 5%;
     font-size:20px;
  }
+
+ #listSub{
+    justify-content: flex-start;
+    margin: 5px 0 5px 10px;
+ }
 #content-desc{
-    width:100%;
+    width:70%;
     height:auto;
+    margin-right:5px;
 }
 #content-desc p{
+    width:100%;
     font-size:15px;
     margin:0;
     text-align:left;
+    overflow-wrap: break-word;
 }
 #content-edit{
     margin-top:5px;
-    text-align:right;
+}
+#content-edit a{
+
+}
+#calender-button{
+    margin:auto;
+    margin-right:20px;
 }
 
+#calender-button a *{
+    background-color:white;
+}
 
 
 
@@ -195,12 +240,63 @@ listMain div{
 
 @media screen and (min-width:769px) {
 
+    .back_img {
+        padding:0 3% 0 3%;
+        height:100vh;
+        text-align:  center;    /* 文字中央寄せ */
+        border: solid 2px;      /* 枠線指定 */
+        background-image: url(img/background2.webp);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #464646;
+
     .main .media-flex{
         display:flex;
     }
+    .type-flex{
+        display:block;
+    }
+    /*createplan.html*/
+    .planform{
+        margin-bottom: 10vh;
+    }
+
+    /*contentform.html*/
+    #title-contents,#desc-contents{
+        text-align:left;
+    }
+    #form-contents{
+        position:relative;
+    }
+    #date-selects{
+        position:absolute;
+        top:0;
+        right:15%;
+        width:150px;
+    }
+    #date-select{
+        font-size:1.5em;
+        height:150px;
+    }
+    input,#title-content{
+        font-size:30px;
+    }
+    #desc-contents{
+        margin-bottom:10vh;
+    }
+    #desc-content{
+        font-size:20px;
+        font-weight: 700;
+        width:70%;
+        height:150px;
+    }
+
+    }
     #listDay{
-        width:100px;
-        font-size:25px;
+        margin: auto;
+        margin-bottom: 10px;
     }
 
 }

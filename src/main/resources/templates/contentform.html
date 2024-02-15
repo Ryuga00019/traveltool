@@ -11,11 +11,11 @@
     <!--main-->
     <section class="main">
         <section> <!-- createplan.html もsectionタグで formごと囲っていいと思う(属性は新しく<formは同じだけどsectionで別々に指定できる>)-->
-            <form class="createplan" th:action="@{savecontent(contentId=${eventContent.getEventPlanItemId()})}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
+            <form class="contentplan" id="form-contents" th:action="@{savecontent(contentId=${eventContent.getEventPlanItemId()})}" method="post" enctype="multipart/form-data" th:object="${eventContent}">
 
                 <!--    予定追加-->
                 <!--    予定タイトル-->
-                <div class="media-flex">
+                <div class="type-flex" id="Title-Day">
                     <section class="planform" id="title-contents">
                         <label for="title-content">タイトル</label>
                         <div>
@@ -23,10 +23,10 @@
                         </div>
                     </section>
                     <!--    予定追加日-->
-                    <section class="planform" id="date-selects">
+                    <section class="planform" id="date-selects" >
                         <label for="date-select">予定の追加日</label>
                         <div>
-                            <select id="date-select" th:field="*{day}" >
+                            <select class="plan-border" id="date-select" th:field="*{day}" size="2">
                                 <th:block th:each="eventdate:${#numbers.sequence(0,eventDate)}">
                                     <option th:value="${eventdate}" th:text="|${eventdate}|+1 + 日目">日目  yy/mm/dd</option>
                                 </th:block>
@@ -36,19 +36,20 @@
                 </div>
 
                 <!--    予定テキスト-->
-                <div class="planform">
+                <div class="planform" id="desc-contents">
                     <label for="desc-content">予定の詳細</label>
                     <div>
-                        <textarea rows="3" cols="30" placeholder="50字まで" th:field="*{description}" maxlength="50" id="desc-content"></textarea>
+                        <textarea rows="3" cols="30"  th:field="*{description}"  id="desc-content" maxlength="500"></textarea>
                     </div>
                 </div>
+
 
                 <section class="media-flex">
                     <!--    予定開始時間-->
                     <div class="planform">
                         <label for="dateTime-start">開始時刻</label>
                         <div>
-                            <input class="flatpickr" type="text" th:field="*{startTime}" name="startdate" placeholder="予定の開始時刻" readonly="readonly" id="dateTime-start">
+                            <input class="flatpickr" type="text" th:field="*{startTime}" name="startdate"  placeholder="予定の開始時刻" readonly="readonly" id="dateTime-start">
                             <!--                    <input type="time" id="dateTime-start" th:field="*{startTime}">-->
                         </div>
                     </div>
@@ -85,7 +86,9 @@
     $windowWidth = window.innerWidth;
     $breakPointA = 480;
     $breakPointB = 768;
+    var s=document.getElementById("desc-content")
     var p=document.getElementById("changetext");
+
 
     isMobileSize = ($windowWidth < $breakPointA);
     isTabletSize = ($windowWidth <= $breakPointB) && ($windowWidth > $breakPointA);
@@ -94,11 +97,15 @@
         //モバイルサイズの場合の記述
         document.getElementById("changetext").innerHTML = "↓";
          p.style.fontSize='30px';
+         s.setAttribute("maxlength", 50);
+         s.placeholder="50字まで";
     }
     if(isTabletSize){
         //タブレットサイズの場合の記述
         document.getElementById("changetext").innerHTML = "↓";
         p.style.fontSize='40px';
+        s.setAttribute("maxlength", 50);
+         s.placeholder="50字まで";
     }if(isPcSize){
         //PCサイズの場合の記述
         document.getElementById("changetext").innerHTML = "⇒";

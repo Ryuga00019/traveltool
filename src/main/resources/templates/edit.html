@@ -25,29 +25,51 @@
                 <p class="uk-label-success" id="listDay" th:text="${eventdate}+1 +'日目'"></p>
                 <!--    <div>[[${sortedContents.get(eventdate)}]]</div>-->
                 <div th:each="content: ${sortedContents.get(eventdate)}">
-                    <div class="contents-bg">
-                        <div class="uk-flex-inline" id="listMain">
-                            <span id="contentName">[[${content.getContentName()}]]</span>
-                            <div class="uk-flex-inline">
-                                <p>[[${content.getStartTime()}]] </p>
-                                <span>-</span>
-                                <p>[[${content.getEndTime()}]]</p>
+<!--                    <div  id="contentlist">-->
+                        <div class="contents-bg">
+                            <div class="bottom-border">
+                                <div class="uk-flex-inline" id="listMain">
+                                    <span id="contentName">[[${content.getContentName()}]]</span>
+                                    <div class="uk-flex-inline">
+                                        <p>[[${content.getStartTime()}]] </p>
+                                        <span>-</span>
+                                        <p>[[${content.getEndTime()}]]</p>
+                                    </div>
+                                    <!--                <p>[[${content.getDay()}+1]]</p>-->
+                                </div>
                             </div>
-                            <!--                <p>[[${content.getDay()}+1]]</p>-->
-                        </div>
-                        <div id="content-desc">
-                            <p>[[${content.getDescription()}]]</p>
-                        </div>
-                        <!--                <p>[[${content.getEventPlanItemId()}]]</p>-->
-                        <div id="content-edit">
-                            <a class="plan-border " href="/editcontent" th:href="@{editcontent(contentId=${content.getEventPlanItemId()})}">予定の編集</a>
-                        </div>
 
-                    </div>
-
+                            <div class="bottom-border">
+                                <div class="uk-flex" id="listSub">
+                                    <div id="content-desc">
+                                        <p>[[${content.getDescription()}]]</p>
+                                    </div>
+                                    <div style="border: 1px solid; border-radius: 10px; ">
+                                        <a th:href="@{/Map}" style="display:flex;align-items: center;justify-content: flex-end;">
+                                            <p style="margin:0; width:150px;">地図から場所を記入</p>
+                                            <img style="max-width:35px;" th:src="@{/css/img/map_icon.webp}" >
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                <p>[[${content.getEventPlanItemId()}]]</p>-->
+                            <div id="content-edit">
+                                <a class="plan-border " href="/editcontent" th:href="@{editcontent(contentId=${content.getEventPlanItemId()})}">予定の編集</a>
+                                <a class="plan-border " href="/deletecontent" th:href="@{deletecontent(contentId=${content.getEventPlanItemId()})}">予定の削除</a>
+                            </div>
+                        </div>
+<!--                    </div>-->
                 </div>
             </div>
         </section>
+    </div>
+    <div style="     margin: 0 2% 0 2%;">
+        <div id="calender-button" style="">
+            <a th:href="@{/savecalender}" style="display:flex;align-items: center;justify-content: flex-end;">
+                <img th:src="@{/css/img/calender_icon.webp}" style="width:50px" >
+            </a>
+
+        </div>
     </div>
 
     <!--footer-->

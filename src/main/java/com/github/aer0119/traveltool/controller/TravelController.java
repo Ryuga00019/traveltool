@@ -86,6 +86,15 @@ public class TravelController {
         return "redirect:/" + planId + "/edit";
     }
 
+    @GetMapping("/{planId}/deletecontent")
+    public String contentDelete(Model model, @PathVariable String planId, @RequestParam String contentId) {
+        var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
+        var eventContent= eventPlan.getEventContent(UUID.fromString(contentId));
+        eventPlan.deleteEventContent(eventContent.getEventPlanItemId());
+        return "redirect:/" + planId + "/edit";
+    }
+
+
     @GetMapping("/{planId}/editcontent")
     public String contentEdit(Model model, @PathVariable String planId, @RequestParam String contentId) {
         var eventPlan = eventPlanRepository.find(UUID.fromString(planId));
@@ -103,6 +112,12 @@ public class TravelController {
     public String getShopMap(Model model) {
         return "map";
     }
+
+    @GetMapping("/savecalender")
+    public String calenderSave(Model model) {
+        return "savecalender";
+    }
+
 
     @GetMapping("/view")
     public String view(Model model, @RequestParam String planId) {

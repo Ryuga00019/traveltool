@@ -13,7 +13,7 @@
     <section class="main">
         <!--ボタン -> CreatePlan-->
         <h2>スケジュールを作成</h2>
-        <form class="createplan" th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}" >
+        <form class="contentplan" th:action="@{/create/save}" method="post" enctype="multipart/form-data" th:object="${eventPlan}" >
 
             <div class="planform">
                 <label for="planname">旅行表の名前</label>
@@ -54,7 +54,6 @@
         dateFormat: "Y-m-d",
     }
     flatpickr('.flatpickr', config);
-
 
 //responsive テキスト書き換え と css
     $windowWidth = window.innerWidth;
